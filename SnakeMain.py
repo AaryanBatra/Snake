@@ -107,7 +107,5 @@ while not game_over:
         clock.tick(10)
         pygame.display.update()
 
-
 pygame.quit()
 quit()
-
