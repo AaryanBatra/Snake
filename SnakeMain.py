@@ -16,9 +16,6 @@ coordlistx = [x]
 coordlisty = [y]
 bodylistx = []
 bodylisty = []
-snakelistx = []
-snakelisty = []
-
 
 pygame.init()
 pygame.font.init()
