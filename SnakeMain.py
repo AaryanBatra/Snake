@@ -59,10 +59,9 @@ while not game_over:
 
     bodylistx.clear()
     bodylisty.clear()
-
+    
     coordlistx.append(x)
     coordlisty.append(y)
-
 
     scoreboard = font2.render(str(counter), False, white)
     dis.blit(scoreboard, (30, 30))
@@ -93,7 +92,6 @@ while not game_over:
             fcy = makecoord()
             counter += 1
 
-
         pygame.draw.rect(dis, green, [x, y, 20, 20])
         pygame.draw.rect(dis, red, [fcx, fcy, 20, 20])
 
@@ -105,13 +103,9 @@ while not game_over:
             if z > 0:
                 bodylistx.append(coordlistx[z])
                 bodylisty.append(coordlisty[z])
-                if x in bodylistx and y in bodylisty:
-                    print("TRUE AT: " + str(x) + "," + str(y))
 
         coordlistx.reverse()
         coordlisty.reverse()
-
-
 
         clock.tick(10)
         pygame.display.update()
