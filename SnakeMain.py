@@ -10,8 +10,8 @@ xcoord = 0
 ycoord = 0
 x = 190
 y = 190
-direction = "none"
 counter = 0
+key = False
 coordlistx = [x]
 coordlisty = [y]
 bodylistx = []
@@ -54,22 +54,13 @@ while not game_over:
     x += xcoord
     y += ycoord
 
-    bodylistx.clear()
-    bodylisty.clear()
-    
-    coordlistx.append(x)
-    coordlisty.append(y)
-
-    scoreboard = font2.render(str(counter), False, white)
-    dis.blit(scoreboard, (30, 30))
-    pygame.display.update()
-
-    if x < 0 or y < 0 or x > 390 or y > 390 or x in bodylistx and y in bodylisty:
+    if key == True or x < 0 or y < 0 or x > 390 or y > 390:
         texty = font.render('You Lost!', False, white)
         texty2 = font2.render('Press W to continue', False, white)
         dis.blit(texty, (100,165))
         dis.blit(texty2, (110, 220))
         if pygame.key.get_pressed()[pygame.K_w]:
+            key = False
             x = 190
             y = 190
             counter = 0
@@ -95,7 +86,7 @@ while not game_over:
         coordlistx.reverse()
         coordlisty.reverse()
 
-        for z in range(counter+1):
+        for z in range(counter):
             pygame.draw.rect(dis, green, [coordlistx[z], coordlisty[z], 20, 20])
             if z > 0:
                 bodylistx.append(coordlistx[z])
@@ -104,8 +95,22 @@ while not game_over:
         coordlistx.reverse()
         coordlisty.reverse()
 
+        if (x in bodylistx and y in bodylisty):
+            key = True
+
+        bodylistx.clear()
+        bodylisty.clear()
+
+        coordlistx.append(x)
+        coordlisty.append(y)
+
         clock.tick(10)
         pygame.display.update()
+
+    scoreboard = font2.render(str(counter), False, white)
+    dis.blit(scoreboard, (30, 30))
+    pygame.display.update()
+
 
 pygame.quit()
 quit()
