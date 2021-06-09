@@ -111,6 +111,5 @@ while not game_over:
     dis.blit(scoreboard, (30, 30))
     pygame.display.update()
 
-
 pygame.quit()
 quit()
